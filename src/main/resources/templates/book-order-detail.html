@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+
+<!-- Font Awesome JS -->
+<script defer src="https://kit.fontawesome.com/5319973bd5.js"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+	integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+	crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+	integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/book-user.js}"></script>
+<script type="text/javascript" th:src="@{/js/book-detail-validation.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/book-user.css}" />
+
+
+<meta charset="ISO-8859-1">
+<title>Books</title>
+
+</head>
+<body>
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				 <a th:href="@{/Library/{username}/books(username = ${username})}">
+					<h2>The Library</h2>
+				</a>
+			</div>
+
+			<ul class="list-unstyled components">
+				<p>Welcome reader</p>
+				<li class="active"><a href="#homeSubmenu"
+					data-toggle="collapse" aria-expanded="false"
+					class="dropdown-toggle">Home</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li><a href="#">Home 1</a></li>
+						<li><a href="#">Home 2</a></li>
+						<li><a href="#">Home 3</a></li>
+					</ul></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#pageSubmenu" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">Pages</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li><a href="#">Page 1</a></li>
+						<li><a href="#">Page 2</a></li>
+						<li><a href="#">Page 3</a></li>
+					</ul></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+
+
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i> <span>Menu</span>
+
+					</button>
+
+					<button class="btn btn-dark d-inline-block d-lg-none ml-auto"
+						type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<i class="fas fa-align-justify"></i>
+					</button>
+
+					<div class="collapse navbar-collapse bg-warning"
+						id="navbarSupportedContent">
+						<ul class="nav navbar-nav ">
+							<p text=${user.username}></p>
+							<li><a class="btn btn-danger"
+								th:href="@{/Library/guest/login}">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div style="text-align: center">
+				<h1 style="text-align: center; margin-top: 20px">Order Detail</h1>
+			</div>
+			<br/>
+			<div class="containerr" style="font-size: 20px">
+				  <div class="row">
+				    <div class="col-lg">
+				      
+				    </div>
+				    <div class="col-lg">
+					    <div class="row">
+					     <div class="col">
+					     	<label>OrderID</label>
+					     	<p th:text = ${order.ID} style="font-size: 28px; font-weight: bold; "></p>
+					     	<label>Buyer's username</label>
+					     	<p th:text = ${order.username} style="font-size: 28px; font-weight: bold; "></p>
+					     	<label>Book title</label>
+					     	<p th:text = ${order.bookTitle} style="font-size: 28px; font-weight: bold; "></p>
+					     	<label>Quatity</label>
+					     	<p th:text = ${order.quantity} style="font-size: 28px; font-weight: bold; "></p>
+					     	<label>Order time</label>
+					     	<p th:text = ${order.orderTime} style="font-size: 28px; font-weight: bold; "></p>
+					     	<label>Total payment</label>
+					     	<p th:text = "${totalPrice} + ' VND'" style="font-size: 28px; font-weight: bold; "></p>
+					     	<label>Status</label>
+					     	<p style="font-size: 28px; font-weight: bold; " >In confirming</p>
+					     	
+					     <a type = "button" class="btn btn-info" th:href=@{/Library/{username}/cart(username=${user.username})}   style = "width: 100%; height: 60px; font-size: 24px;font-weight: bold;  margin: 10px 0;">Back to cart</a>
+					     <button type="button" class="btn btn-danger" data-toggle="modal"
+							th:data-target="@{'#sach' + ${order.ID}}" style = "width: 100%; height: 60px; font-size: 24px;font-weight: bold;  margin: 10px 0;">Cancel order</button>
+
+						<div th:id="@{'sach' + ${order.ID}}" class="modal" tabindex="-1"
+							role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">delete</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Do you want to delete <span th:utext="${order.ID}"></span> <br>
+										ID <span th:utext="${order.ID}"></span>
+									</div>
+									<div class="modal-footer">
+										<form style="display: inline" th:object="${order}"
+											th:action="${'/Library/' + {user.username} + '/order/delete/' + {order.ID}}"
+											th:method="DELETE">
+											<button id="btn-delele-course" type="submit"
+												class="btn btn-danger">Confirm</button>
+											<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Cancel</button>
+											
+										</form>
+
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					     	
+					     	
+					    </div>
+				    </div>
+				    </div>
+				    <div class="col-lg">
+				     
+				    </div>
+				  </div>
+				</div>
+
+
+			<hr style="border-width: 5px">
+			<div class="container">
+				<div style="text-align: center">
+					<h1 style="text-align: center; margin-top: 20px">Book Detail</h1>
+				</div>
+				<div>
+					<div th:object="${book}">
+
+						<div class="containerr" style="font-size: 24px">
+							<div class="row">
+
+								<div class="col">
+									<div class="image-content" style="text-align: center">
+
+										<br /> <br /> <img alt=""
+											th:src="@{/getimage/} +${book.photo}" width="500"
+											height="700"> <input type="file" id="selectedFile"
+											th:value="${book.photo}" style="display: none" />
+
+									</div>
+								</div>
+
+								<div class="col" style="padding: 80px 20px; margin-left: 50px">
+
+
+									<div class="row ">
+
+										<div class="col-lg-6">
+											<label for="title">Title</label> <br /> <input type="text"
+												name="title" class="form-control form-control-lg"
+												th:value="${book.title}" readonly><br />
+										</div>
+
+										<div class="col-lg-6">
+											<label>Author</label> <br /> <input type="text"
+												name="author" class="field form-control form-control-lg"
+												th:value="${book.author}" disabled="disabled"><br />
+										</div>
+									</div>
+
+
+
+									<div class=row>
+
+										<div class="col-lg-12">
+											<label>Description</label> <br />
+											<textarea style="height: 100px; width: 100%; margin: 0 auto"
+												class="form-control input-lg" type="text" name="description"
+												disabled="disabled" th:text="${book.description}"></textarea>
+										</div>
+									</div>
+
+									<br />
+
+									<div class=row>
+										<div class="col-lg-6 ">
+											<label>Date release</label> <br /> <input type="text"
+												name="releaseDate"
+												class="field form-control form-control-lg"
+												th:value="${book.releaseDate}" disabled="disabled">
+										</div>
+										<div class="col-lg-6 ">
+											<label>Pages number</label> <br /> <input type="number"
+												name="pageNumbers" id="pageNumbers"
+												class="field form-control form-control-lg"
+												th:value="${book.pageNumbers}" disabled="disabled">
+										</div>
+
+									</div>
+									<br />
+									<div class="row ">
+										<div class="col-lg-6 ">
+											<label>Category</label> <br /> <input type="text"
+												name="category" id="category"
+												class="field form-control form-control-lg"
+												th:value="${book.category}" disabled="disabled"><br />
+										</div>
+
+									</div>
+
+									<div class="row ">
+										<div class="col-lg-6 ">
+											<label><h3>Price</h3></label> <br />
+											<h1 th:text="${book.getPrice()}" style="display: inline">
+											</h1>
+											<small> VND/book</small>
+										</div>
+
+									</div>
+
+									<br />
+
+
+
+								</div>
+
+							</div>
+						</div>
+						<hr style="border-width: 5px">
+						<hr />
+
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+		<script>
+		
+		
+		$(function() {
+			$(".rateyo").rateYo()
+					.on(
+							"rateyo.change",
+							function(e, data) {
+								var rating = data.rating;
+								$(this).parent().find('.score').text(
+										'score :'
+												+ $(this).attr(
+														'data-rateyo-score'));
+								$(this).parent().find('.result').text(
+										rating+ "/5");
+								$(this).parent().find('input[name=rating]')
+										.val(rating); //add rating value to input field
+								
+							});
+		});
+	</script>
+</body>
+</html>

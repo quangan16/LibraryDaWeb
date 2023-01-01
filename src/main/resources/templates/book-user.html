@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/5319973bd5.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" th:src = "@{/js/book-user.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/book-user.css}" />
+<meta charset="ISO-8859-1">
+<title>Books</title>
+
+</head>
+<body>
+<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+             <div class="sidebar-header" >
+               <a th:href="@{/{username}/books(username = ${username})}"> <h2>The Library</h2></a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Have fun reading!!</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+  
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+					<div style="text-align: center">
+						<img th:src="@{/img/lib.jpg}" style = "max-width: 150px"  />
+					</div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav">
+                           
+                           
+                               
+                            
+                            <li style = "text-align: center" >
+                            <h5 type="text" th:text="'Hello, '+ ${session.username}" readonly="readonly"></h5>
+                                <a  class="btn btn-danger"  th:href="@{../guest/login}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#" style="font-size: 40px">The Library</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">New Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">On Sale</a>
+      </li>
+    </ul>
+   <form class="form-inline  "  style="align-self: flex-end;">
+    <input class="form-control mr-0" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  </div>
+</nav>
+            
+	<div class="container">
+	
+		
+		<br /> 
+		 <a class="btn btn-outline-dark btn-lg"  th:href="@{/Library/{username}/cart(username = ${username})}" style="width: 120px; float: right"> <i class="fas fa-shopping-cart"></i> Cart</a>
+		<br /> <br />
+		<br /> <br />
+		<table class="table table-hover table-bordered">
+			<thead style="font-size: 22px" class ="thead-dark text-center">
+				<tr>
+					<th>BookCover</th>
+					<th>Title</th>
+					<th>Author</th>
+					
+				</tr>
+			</thead>
+
+			<tbody class="text-center font-weight-normal table-striped"  style="font-size: 20px">
+				<tr class = "text-center" th:each="book: ${books}"  th:data-parameter1="${user.username}"  th:data-parameter2="${book.bookcode}"   th:onclick="rowClicked(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">
+					<td><img alt ="" th:src="@{/getimage/} +${book.photo}" width="100" height="150"></td>
+					<td class ="align-middle" th:text="${book.title}"></td>
+					<td class ="align-middle" th:text="${book.author}"></td>
+					
+					
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+    </div>
+</div>
+
+	
+	
+	
+	
+	
+</body>
+</html>

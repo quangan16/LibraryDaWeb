@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+
+<!-- Font Awesome JS -->
+<script defer src="https://kit.fontawesome.com/5319973bd5.js"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+	integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+	crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+	integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/book-user.js}"></script>
+<script type="text/javascript" th:src="@{/js/book-detail-validation.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/book-user.css}" />
+
+
+<meta charset="ISO-8859-1">
+<title>Books</title>
+
+</head>
+<body>
+	<div class="wrapper">
+
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<a th:href="@{/Library/{username}/books(username = ${username})}">
+					<h2>The Library</h2>
+				</a>
+			</div>
+
+			<ul class="list-unstyled components">
+				<p>Have fun reading!!</p>
+				<li class="active"><a href="#homeSubmenu"
+					data-toggle="collapse" aria-expanded="false"
+					class="dropdown-toggle">Home</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li><a href="#">Home 1</a></li>
+						<li><a href="#">Home 2</a></li>
+						<li><a href="#">Home 3</a></li>
+					</ul></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#pageSubmenu" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">Pages</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li><a href="#">Page 1</a></li>
+						<li><a href="#">Page 2</a></li>
+						<li><a href="#">Page 3</a></li>
+					</ul></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+
+
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i> <span>Toggle Sidebar</span>
+					</button>
+
+					<button class="btn btn-dark d-inline-block d-lg-none ml-auto"
+						type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<i class="fas fa-align-justify"></i>
+					</button>
+					<div style="text-align: center">
+						<img th:src="@{/img/lib.jpg}" style="max-width: 150px" />
+					</div>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="nav navbar-nav">
+
+
+
+
+							<li style="text-align: center">
+								<h5 type="text" th:text="'Hello, '+ ${session.username}"
+									readonly="readonly"></h5>
+							<a class="btn btn-danger"
+								th:href="@{/Library/guest/login}">Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<nav class="navbar navbar-expand-lg navbar-light"
+				style="background-color: #e3f2fd;">
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarTogglerDemo01"
+					aria-controls="navbarTogglerDemo01" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+					<a class="navbar-brand" href="#" style="font-size: 40px">The
+						Library</a>
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item active"><a class="nav-link" href="#">Home
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">New
+								Books</a></li>
+						<li class="nav-item"><a class="nav-link " href="#">On
+								Sale</a></li>
+					</ul>
+					<form class="form-inline align-middle "
+						style="align-self: flex-end;">
+						<input class="form-control mr-0" type="search"
+							placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
+			</nav>
+			
+			<br/>
+			<div style="text-align: center">
+				<h1>Books available</h1>
+			</div>
+
+			<div class="container">
+				<div>
+					<div th:object="${book}">
+
+						<div class="containerr" style="font-size: 24px">
+							<div class="row">
+
+								<div class="col">
+									<div class="image-content" style="text-align: center">
+
+										<br /> <br /> <img alt=""
+											th:src="@{/getimage/} +${book.photo}" width="500"
+											height="700"> <input type="file" id="selectedFile"
+											th:value="${book.photo}" style="display: none" />
+
+									</div>
+								</div>
+
+								<div class="col" style="padding: 80px 20px; margin-left: 50px">
+									<form class="orderForm needs-validation"
+										th:action="@{/Library/{username}/add-order-book(username = ${user.username})}"
+										th:object="${book}" th:method="post" id="orderForm">
+
+										<div class="row ">
+
+											<div class="col-lg-6">
+												<label for="title">Title</label> <br /> <input type="text"
+													name="title" class="form-control form-control-lg"
+													th:value="${book.title}" readonly><br />
+											</div>
+
+											<div class="col-lg-6">
+												<label>Author</label> <br /> <input type="text"
+													name="author" class="field form-control form-control-lg"
+													th:value="${book.author}" disabled="disabled"><br />
+											</div>
+										</div>
+
+
+
+										<div class=row>
+
+											<div class="col-lg-12">
+												<label>Description</label> <br />
+												<textarea style="height: 100px; width: 100%; margin: 0 auto"
+													class="form-control input-lg" type="text"
+													name="description" disabled="disabled"
+													th:text="${book.description}"></textarea>
+											</div>
+										</div>
+
+										<br />
+
+										<div class=row>
+											<div class="col-lg-6 ">
+												<label>Date release</label> <br /> <input type="text"
+													name="releaseDate"
+													class="field form-control form-control-lg"
+													th:value="${book.releaseDate}" disabled="disabled">
+											</div>
+											<div class="col-lg-6 ">
+												<label>Pages number</label> <br /> <input type="number"
+													name="pageNumbers" id="pageNumbers"
+													class="field form-control form-control-lg"
+													th:value="${book.pageNumbers}" disabled="disabled">
+											</div>
+
+										</div>
+										<br />
+										<div class="row ">
+											<div class="col-lg-6 ">
+												<label>Category</label> <br /> <input type="text"
+													name="category" id="category"
+													class="field form-control form-control-lg"
+													th:value="${book.category}" disabled="disabled"><br />
+											</div>
+
+										</div>
+
+										<div class="row ">
+											<div class="col-lg-6 ">
+												<label><h3>Price</h3></label>
+												<h1 th:text="${book.price}+' VND'"></h1>
+											</div>
+											<div class="col-lg-6 ">
+												<label>Quantity</label> <br /> <input type="number"
+													name="quantity" id="quantity"
+													class="field form-control form-control-lg" th:value=1 min=1
+													max=10>
+
+											</div>
+										</div>
+
+										<br />
+										<div class="row ">
+											<div class="col-lg-6 ">
+												<button type="submit" class="btn btn-lg  btn-dark"
+													form="orderForm"
+													style="margin-right: 50px; margin-bottom: 20px; width: 100%; height: 60px; border-radius: 50px">Put
+													in cart</Button>
+											</div>
+											<div class="col-lg-6 ">
+												<button class="btn btn-lg btn btn btn-secondary"
+													style="margin-right: 50px; margin-bottom: 20px; width: 100%; height: 60px; border-radius: 50px">
+													<a
+														th:href="@{/Library/{username}/cart(username = ${user.username})}"><i
+														class="fas fa-shopping-cart"></i> Check Cart</a>
+												</Button>
+											</div>
+											<div class="col-lg-12 ">
+												<button type="submit" class="btn btn-lg btn-info"
+													form="orderForm"
+													style="margin-right: 50px; margin-bottom: 20px; width: 100%; height: 60px; border-radius: 15px">Order
+													Now</Button>
+											</div>
+										</div>
+									</form>
+
+								</div>
+
+							</div>
+						</div>
+						<hr style="border-width: 5px">
+						<hr />
+						<section>
+
+							<h2 style="text-align: center">Leave your rating and review
+								below here!!!</h2>
+							<br />
+							<p style="font-size: 32px; color: black">Rating</p>
+
+							<form
+								th:action="@{'/Library/'+${user.username}+'/comment/'+${book.bookcode}}"
+								method="post" class="needs-validation was-validated" novalidate>
+								<span class="rateyo" id="rating" data-rateyo-rating="0"
+									data-rateyo-num-stars="5" data-rateyo-score="3"
+									data-rateyo-star-width="50px" style="display: inline-block"></span>
+								<span class='text-comment-box result'></span> <input
+									type="hidden" name="rating" class="form-check-input"
+									id="validationFormCheck1" required="required">
+								<div class="valid-feedback">Valid.</div>
+								<div class="invalid-feedback">Please fill out this field.</div>
+
+
+
+								<div>
+									<input class="form-control" type="hidden"
+										th:value="${user.username}" disabled />
+								</div>
+								<br /> <br />
+								<div>
+									<p style="font-size: 32px; color: black">Comment</p>
+									<textarea rows="4" cols="5" name="content"
+										class="form-control is-valid" id="validationTextarea"
+										placeholder="Write your thought about this book here ..."
+										required="required"></textarea>
+
+									<div class="invalid-feedback">Please fill out this field
+										and star rating.</div>
+
+									<br />
+								</div>
+
+
+
+
+
+								<br />
+
+								<div>
+									<input type="submit" class="btn btn-primary" name="Send">
+								</div>
+
+							</form>
+							<br /> <br />
+							<div class="list-comment-box">
+								<h3 class="text-comment-box" style="text-align: center">All
+									customers's review</h3>
+								<br /> <br />
+								<tr th:each="comment: ${comments}">
+
+									<div>
+										<div>
+											<span style="font-size: 24px; color: black" id="text"
+												th:text="${comment.username}"></span><br /> <span id="time"
+												th:text="${{#dates.format(comment.time, 'dd-MM-yyyy')}}"></span><br>
+											<br /> <span class="rateyo"
+												th:data-rateyo-rating="${comment.starPoint}"
+												data-rateyo-num-stars="5" data-rateyo-score="3"
+												data-rateyo-read-only="true" style="display: inline-block"></span>
+
+											<span th:text="${comment.starPoint} + '/5'"></span> <br />
+											<br /> <input id="text1" th:value="${comment.content}"
+												style="width: 100%; height: 50px; font-size: 20px" disabled></input><br>
+										</div>
+									</div>
+									<br />
+									<hr />
+								</tr>
+							</div>
+						</section>
+
+
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+		<script>
+		
+		
+		$(function() {
+			$(".rateyo").rateYo()
+					.on(
+							"rateyo.change",
+							function(e, data) {
+								var rating = data.rating;
+								$(this).parent().find('.score').text(
+										'score :'
+												+ $(this).attr(
+														'data-rateyo-score'));
+								$(this).parent().find('.result').text(
+										rating+ "/5");
+								$(this).parent().find('input[name=rating]')
+										.val(rating); //add rating value to input field
+								
+							});
+		});
+	</script>
+</body>
+</html>

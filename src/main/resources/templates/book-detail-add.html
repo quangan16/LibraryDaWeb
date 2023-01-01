@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bookdetail.css}" />
+<script type="text/javascript" th:src = "@{/js/image-import.js}"></script>
+<script type="text/javascript" th:src = "@{/js/book-detail-validation.js}"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Book</title>
+</head>
+<body>
+
+	<h1 class="text-center" style="margin-top: 30px" >Book Info</h1>
+
+	<form class="needs-validation" th:object="${book}" th:action="@{save/{id}(id=${book.bookcode})}" enctype="multipart/form-data"
+		th:method="POST" action="" novalidate>
+		
+		<div class="containerr" style = "font-size: 24px">
+			<div class="row" >
+				<div class="col" style="padding:80px 20px; margin-left: 50px">
+				<div class="row ">
+					<div class="col-lg-6" >
+						<label for="title">Tiêu đề</label> <br />
+						<input 
+							type="text" name="title" class="form-control form-control-lg"
+							th:value="${book.title}" required="required">
+						<div class="valid-feedback">Valid.</div>
+    					<div class="invalid-feedback">Please fill out this field.</div>
+							<br />
+					</div>
+					
+					<div class="col-lg-6">
+						<label>Tác giả</label> <br />
+						 <input  
+							type="text" name="author" class="field form-control form-control-lg"
+							th:value="${book.author}" required="required">
+							<div class="valid-feedback">Valid.</div>
+    						<div class="invalid-feedback">Please fill out this field.</div>
+							<br />
+					</div>
+				</div>
+				
+				
+
+				<div class=row>
+
+					<div class="col-lg-12">
+						<label>Mô tả về sách:</label> <br />
+						<textarea  style="height: 200px; width: 100%; margin: 0 auto"
+							class="form-control input-lg" type="text" name="description"
+							th:text="${book.description}" required="required" ></textarea>
+					</div>
+				</div>
+				
+				<br/>
+
+				<div class=row>
+					<div class="col-lg-6 ">
+						<label>Ngày phát hành</label> <br />
+						 <input  
+							type="text" name="releaseDate" class="field form-control form-control-lg"
+							th:value="${book.releaseDate}" required="required">
+							<div class="valid-feedback">Valid.</div>
+    						<div class="invalid-feedback">Please fill out this field.</div>
+							 <br />
+						
+						<label>Thể loại</label> <br />
+						<select type="text" name="category"  style="width: 100%"
+							th:value="${book.category}" >
+							<option value="comic">Comic</option>
+							<option value="history">History</option>
+							<option value="romance">Romance</option>
+							<option value="sciene">Sciene</option>
+						</select>
+					</div>
+					<div class="col-lg-6 ">
+						<label>Số trang</label> <br /> 
+						<input  type="number"
+							name="pageNumbers" id="pageNumbers" class="field form-control form-control-lg" 
+							th:value="${book.pageNumbers}" required="required">
+						<div class="valid-feedback">Valid.</div>
+   						<div class="invalid-feedback">Please fill out this field.</div>
+							<br />
+					</div>
+					<br />
+				</div>
+			</div>
+					<div class="col">
+						<div class="image-content" style="text-align: center">
+							<input class="btn btn-primary" type="button" value="Upload" onclick="document.getElementById('selectedFile').click();" />
+							<br/>
+							<br/>
+							<br/>
+							<img alt ="" id="output" th:src="@{/getimage/} +${book.photo}" width="500" height="600">
+							<input type="file" name ="pic" id="selectedFile" th:value="${book.photo}" onchange="loadFile(event)" style="display: none;" />
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr style="border-width: 3px">
+			<input class="float-right btn btn-lg btn btn-success" type="submit" value="Add Book" style = "margin-right: 50px; margin-bottom: 20px; width:200px">
+	</form>
+</body>
+
+</html>

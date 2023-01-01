@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+<!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/5319973bd5.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" th:src = "@{/js/book-user.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/book-user.css}" />
+<meta charset="ISO-8859-1">
+<title>Books</title>
+
+</head>
+<body>
+<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+             <div class="sidebar-header">
+               <a href="/Library/user/books"> <h3>Online Library</h3></a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Welcome reader</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+  
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+					<div style="text-align: center">
+						<h1 style="text-align: center; margin-top: 20px">List Books
+							Table Data</h1>
+					</div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav">
+                           
+                           
+                               
+                            
+                            <li >
+                                <a class="btn btn-danger"  th:href="@{/Library/guest/login}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+	<div class="container">
+		
+		<br /> 
+		
+		<br /> 
+		<div>
+			<a th:href="@{addbook/{id}(id = -1)}"
+				class="float-right btn btn-info">New Book</a>
+		</div>
+		<br /> <br />
+		<br />
+		<table class="table table-primary  table-bordered">
+			<thead class="table-dark " style="font-size: 22px">
+				<tr>
+					<th>BookCode</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Description</th>
+					<th>ReleaseDate</th>
+					<th>PageNumbers</th>
+					<th>Category</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody class="text-center font-weight-normal" style="font-size: 20px">
+				<tr th:each="book: ${books}">
+					<td class="text-left" th:text="${book.bookcode}"></td>
+					<td th:text="${book.title}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.description}"></td>
+					<td th:text="${book.releaseDate}"></td>
+					<td th:text="${book.PageNumbers}"></td>
+					<td th:text="${book.category}"></td>
+					<td><a th:href="@{book/{id}(id = ${book.bookcode})}"
+						class="btn btn-success">VIEW</a>
+
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							th:data-target="@{'#sach' + ${book.bookcode}}">Delete</button>
+
+						<div th:id="@{'sach' + ${book.bookcode}}" class="modal" tabindex="-1"
+							role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">delete</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										Do you want to delete <span th:utext="${book.title}"></span> <br>
+										ID <span th:utext="${book.bookcode}"></span>
+									</div>
+									<div class="modal-footer">
+										<form style="display: inline" th:object="${book}"
+											th:action="@{book/delete/{id}(id = ${book.bookcode})}"
+											th:method="DELETE">
+											<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Cancel</button>
+											<button id="btn-delele-course" type="submit"
+												class="btn btn-danger">Delete</button>
+										</form>
+
+										
+									</div>
+								</div>
+							</div>
+						</div></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+    </div>
+</div>
+	<div class="container">
+		
+
+	</div>
+	
+</body>
+</html>
