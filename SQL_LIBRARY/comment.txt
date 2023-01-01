@@ -1,0 +1,8 @@
+CREATE TABLE `library`.`comment` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `userID` INT NOT NULL,
+  `bookcode` INT NOT NULL,
+  `content` VARCHAR(45) NOT NULL,
+  `time` DATE NOT NULL,
+  `starPoint` FLOAT NOT NULL,
+  PRIMARY KEY (`ID`, `time`));

@@ -1,0 +1,7 @@
+CREATE TABLE `library`.`order` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `booktitle` VARCHAR(50) NOT NULL,
+  `quantity` INT NOT NULL,
+  `ordertime` DATE NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));

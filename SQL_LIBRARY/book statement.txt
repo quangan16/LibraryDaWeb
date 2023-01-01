@@ -1,0 +1,20 @@
+CREATE TABLE `library`.`book` (
+  `id` INT NOT NULL,
+  `title` VARCHAR(30) NOT NULL,
+  `author` VARCHAR(20) NOT NULL,
+  `description` VARCHAR(60) NOT NULL,
+  `releaseDate` DATE NOT NULL,
+  `pageNumbers` INT NOT NULL,
+  `category` VARCHAR(25) NOT NULL,
+  `bookcol` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `library`.`book` 
+CHANGE COLUMN `id` `id` INT NOT NULL AUTO_INCREMENT ;
+
+
+ALTER TABLE `library`.`book` 
+CHANGE COLUMN `id` `bookcode` INT NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `library`.`book` 
+ADD COLUMN `image` VARCHAR(45) NULL AFTER `category`;
