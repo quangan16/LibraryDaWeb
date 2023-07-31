@@ -12,7 +12,7 @@ import java.util.List;
 public class UserDAO {
 	private String DB_URL = "jdbc:mysql://localhost:3306/library";
 	private String DB_USERNAME = "root";
-	private String DB_PASSWORD = "1610";
+	private String DB_PASSWORD = "aannn1610";
 	
 	private static final String SELECT_ALL_USERS = "SELECT * FROM user";
 	private static final String SELECT_USER_BY_ID = "SELECT * FROM user WHERE ID = ?";

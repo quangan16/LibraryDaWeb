@@ -12,7 +12,7 @@ import java.util.List;
 public class BookDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/library";
 	private String jdbcUsername = "root";
-	private String jdbcPassWord = "1610";
+	private String jdbcPassWord = "aannn1610";
 	// define sql statements
 	private static final String SELECT_ALL_BOOKS = "select * from book";
 	private static final String SELECT_BOOK_BY_ID = "select * from book where bookcode = ?";
